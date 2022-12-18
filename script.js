@@ -6,11 +6,13 @@ let searchBtn = document.getElementById("search-btn");
 let cityRef= document.getElementById("city");
 
 let getWeather = () => {
-
+    // Makes them enter a city name, returns a message if they havent.
     let cityValue = cityRef.value;
     if(cityValue.length == 0){
         result.innerHTML = `<h3 class="msg">Please enter a city name.</h3>`;
     }
+
+    // Here we grab all our data.
     else{
         let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${key}&units=imperial`;
         cityRef.value = "";
@@ -18,14 +20,14 @@ let getWeather = () => {
         .then((resp) => resp.json())
         
         .then((data) => {
-
+            // This is the function to change the wallpaper based off the weather.main descriptor.
             changewall(data.weather[0].main)
             function changewall(url){
                 if(url=='Clear')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2018/08/06/22/55/sun-3588618__480.jpg')`;
                 
                 else if(url=='Clouds')
-                document.body.style.backgroundImage= `url('https://thumbs.dreamstime.com/b/white-fluffy-thick-clouds-against-blue-sky-natural-background-wallpaper-concept-clean-air-ecology-white-fluffy-165897187.jpg ')`;
+                document.body.style.backgroundImage= `url('https://cdn.pixabay.com/photo/2015/12/25/13/03/sky-1107579__340.jpg')`;
                 
                 else if(url=='Snow')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg')`;
@@ -45,6 +47,8 @@ let getWeather = () => {
             
             
             };
+
+            // This is to convert the UNIXTimestamp they give as sunrise and sunset.
             var date = new Date(data.sys.sunrise * 1000)
             var sunrise = date.toLocaleTimeString('en-US')
             var date = new Date(data.sys.sunset * 1000)
@@ -57,15 +61,17 @@ let getWeather = () => {
             console.log(data.name);
             console.log(data.main.temp_min);
             console.log(data.main.temp_max);
+            
+            // Below creates all the new information grabbed from the api. Fills in the container. 
             result.innerHTML = `
             <div class="shape shape-3">
-                <img class="sunrise" src="/sunrise.png">
+                <img class="sunrise" src="/images/sunrise.png">
                 <div class="temp-container">
                 <h4 class="temp">${sunrise}</h4>
                 </div>
             </div>
             <div class="shape shape-4">
-                <img class="sunrise" src="/sunset.png">
+                <img class="sunrise" src="/images/sunset.png">
                 <div class="temp-container">
                 <h4 class="temp">${sunset}</h4>
                 </div>
@@ -94,7 +100,7 @@ let getWeather = () => {
         })
     }
 };
-
+// Button click event on search
 searchBtn.addEventListener("click", getWeather);
 window.addEventListener("load", getWeather);
 
