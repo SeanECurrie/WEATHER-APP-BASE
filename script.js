@@ -48,32 +48,49 @@ let getWeather = () => {
             
             };
 
-            // This is to convert the UNIXTimestamp they give as sunrise and sunset.
-            var date = new Date(data.sys.sunrise * 1000)
-            var sunrise = date.toLocaleTimeString('en-US')
-            var date = new Date(data.sys.sunset * 1000)
-            var sunset = date.toLocaleTimeString('en-US')
-            console.log(date);
+            
+
+
+            // This is to convert the UNIXTimestamp they give as sunrise and sunset but in Local time.
+            
+            // var date = new Date(data.sys.sunrise * 1000)
+            // var sunrise = date.toLocaleTimeString('en-US')
+            // var date = new Date(data.sys.sunset * 1000)
+            // var sunset = date.toLocaleTimeString('en-US')
+            // console.log(date);
             console.log(data);
             console.log(data.weather[0].icon);
             console.log(data.weather[0].main);
             console.log(data.weather[0].description);
             console.log(data.name);
+            console.log(data.timezone);
+           
             console.log(data.main.temp_min);
             console.log(data.main.temp_max);
+
+            // This is to convert the UNIXTimestamp they give as sunrise and sunset in the area that is searched.
+            let timezone_test = data.timezone;
+            let sunrise_test = data.sys.sunrise;
+            let sunset_test = data.sys.sunset;
+            let x = moment.utc(sunrise_test,'X').add(timezone_test,'seconds').format('HH:mm a');
+            let y = moment.utc(sunset_test,'X').add(timezone_test,'seconds').format('h:mm a');
+            console.log(x);
+            
+            
+
             
             // Below creates all the new information grabbed from the api. Fills in the container. 
             result.innerHTML = `
             <div class="shape shape-3">
                 <img class="sunrise" src="/images/sunrise.png">
                 <div class="temp-container">
-                <h4 class="temp">${sunrise}</h4>
+                <h4 class="temp">${x}</h4>
                 </div>
             </div>
             <div class="shape shape-4">
                 <img class="sunrise" src="/images/sunset.png">
                 <div class="temp-container">
-                <h4 class="temp">${sunset}</h4>
+                <h4 class="temp">${y}</h4>
                 </div>
             </div>
             <h2>${data.name}</h2>
@@ -91,6 +108,18 @@ let getWeather = () => {
                     <h4 class="temp">${parseInt(data.main.temp_max)} &#176;</h4>
                 </div>
             </div>
+
+            <div class="shape shape-2 temp-container title">
+            <div>
+                <h4 class="title" style="letter-spacing: 0.1em;">Feels Like</h4>
+                <h4 class="temp-2">${parseInt(data.main.feels_like)} &#176;</h4>
+            </div>
+            <div>
+                <h4 class="title" style= "letter-spacing: 0.1em;">Humidity</h4>
+                <h4 class="temp-2">${data.main.humidity} &#176;</h4>
+            </div>
+            </div>
+
             `;
 
 
@@ -103,6 +132,7 @@ let getWeather = () => {
 // Button click event on search
 searchBtn.addEventListener("click", getWeather);
 window.addEventListener("load", getWeather);
+
 
 
   
