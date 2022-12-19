@@ -82,13 +82,13 @@ let getWeather = () => {
             // Below creates all the new information grabbed from the api. Fills in the container. 
             result.innerHTML = `
             <div class="shape shape-3">
-                <img class="sunrise" src="/images/sunrise.png">
+                <img class="sunrise" src='https://cdn-icons-png.flaticon.com/128/8098/8098355.png'>
                 <div class="temp-container">
                 <h4 class="temp">${x}</h4>
                 </div>
             </div>
             <div class="shape shape-4">
-                <img class="sunrise" src="/images/sunset.png">
+                <img class="sunrise" src="https://cdn-icons-png.flaticon.com/128/8098/8098387.png">
                 <div class="temp-container">
                 <h4 class="temp">${y}</h4>
                 </div>
