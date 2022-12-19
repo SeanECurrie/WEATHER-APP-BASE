@@ -52,13 +52,7 @@ let getWeather = () => {
             
 
 
-            // This is to convert the UNIXTimestamp they give as sunrise and sunset but in Local time.
-            
-            // var date = new Date(data.sys.sunrise * 1000)
-            // var sunrise = date.toLocaleTimeString('en-US')
-            // var date = new Date(data.sys.sunset * 1000)
-            // var sunset = date.toLocaleTimeString('en-US')
-            // console.log(date);
+
             console.log(data);
             console.log(data.weather[0].icon);
             console.log(data.weather[0].main);
@@ -69,7 +63,7 @@ let getWeather = () => {
             console.log(data.main.temp_min);
             console.log(data.main.temp_max);
 
-            // This is to convert the UNIXTimestamp they give as sunrise and sunset in the area that is searched.
+            // This is to convert the UNIXTimestamp they give as sunrise and sunset in the area timezone that is searched.
             let timezone_test = data.timezone;
             let sunrise_test = data.sys.sunrise;
             let sunset_test = data.sys.sunset;
@@ -80,7 +74,7 @@ let getWeather = () => {
             
 
             
-            // Below creates all the new information grabbed from the api. Fills in the container. 
+            // Below creates all the new information grabbed from the api. Fills in the container. Creates the sunrise/sunset/feels like shapes
             result.innerHTML = `
             <div class="shape shape-3">
                 <img class="sunrise" src='https://cdn-icons-png.flaticon.com/128/8098/8098355.png'>
@@ -131,6 +125,7 @@ let getWeather = () => {
     }
 };
 // Button click event on search
+
 searchBtn.addEventListener("click", getWeather);
 window.addEventListener("load", getWeather);
 
