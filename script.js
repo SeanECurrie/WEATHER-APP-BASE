@@ -23,29 +23,30 @@ let getWeather = () => {
             // This is the function to change the wallpaper based off the weather.main descriptor.
             changewall(data.weather[0].main)
             function changewall(url){
-                if(url=='Clear')
+                if( url=='Clear')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2018/08/06/22/55/sun-3588618__480.jpg')`;
                 
-                else if(url=='Clouds')
+                else if( url=='Clouds')
                 document.body.style.backgroundImage= `url('https://cdn.pixabay.com/photo/2015/12/25/13/03/sky-1107579__340.jpg')`;
                 
-                else if(url=='Snow')
+                else if( url=='Snow')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2019/10/07/11/26/winter-landscape-4532412__340.jpg')`;
-               
-                else if(url=='Haze' || 'Mist' || 'Smoke' || 'Fog')
+                
+                else if( url=='Rain' || url == 'Drizzle')
+                document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2018/05/31/13/13/rainy-day-3443977__480.jpg')`;
+
+                else if( url=='Haze' ||  url =='Smoke' )
                 document.body.style.backgroundImage=`url('https://external-preview.redd.it/uXph-aQl65LEMx6tzW_11oo3sUkJ5keWzhNx6VKuO_s.jpg?auto=webp&s=af33259ad0da522f2165033965cfd4dc99da07c1 ')`;
                 
-                else if(url=='Thunderstorm' || 'Squall' || 'Tornado')
+                else if( url=='Thunderstorm' || url == 'Squall' || url ==  'Tornado')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2016/01/22/23/06/flash-1156822__340.jpg')`;
             
-            
-                else if(url=='Rain' || 'Drizzle')
-                document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2018/03/11/12/14/raindrops-3216607__340.jpg')`;
-            
-                else if(url=='Sand' || 'Dust' || 'Ash')
+                else if(url=='Sand' || url == 'Dust' || url == 'Ash')
                 document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2019/09/15/13/53/monument-valley-4478323_960_720.jpg')`;
             
-            
+                else if(url == 'Mist'  || url == 'Fog')
+                document.body.style.backgroundImage=`url('https://cdn.pixabay.com/photo/2016/11/18/15/36/fir-trees-1835402__480.jpg')`;
+                
             };
 
             

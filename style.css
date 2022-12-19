@@ -37,6 +37,8 @@ body {
 
 
 
+
+
 .container{
     width: 100%;
     background-color: var(--transp-white-2);
@@ -50,15 +52,17 @@ body {
 .shape{
     position: absolute;
     background-color: var(--transp-white-1);
-    backdrop-filter: blur(1.2em);
+    backdrop-filter: blur(10px);
     border: 2px solid var(--transp-white-2);
     border-radius: 50%;
+    backdrop-filter: blur(80px);
 }
 .shape-1{
     height: 13em;
     width: 13em;
     right: -6.5em;
     top: 1.8em;
+    backdrop-filter: blur(10px);
 }
 
 .shape-2{
@@ -69,6 +73,7 @@ body {
     padding: 5em .2em;
     font-size: 20px;
     position:absolute;
+    backdrop-filter: blur(10px);
     
     
 }
@@ -78,6 +83,7 @@ body {
     width: 11em;
     top: -7em;
     left: -9em;
+    backdrop-filter: blur(10px);
 }
 
 .shape-4{
@@ -85,6 +91,7 @@ body {
     width: 11em;
     bottom: -7em;
     right: -9em;
+    backdrop-filter: blur(10px);
 }
 
 .search-container{
